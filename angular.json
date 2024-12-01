@@ -37,7 +37,11 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/vendor.bundle.base.css",
+              "src/assets/css/vendor.bundle.addons.css",
+              "src/assets/css/style.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
