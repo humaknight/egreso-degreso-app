@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,10 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// ngrx
+import {StoreModule} from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBz7_TqqwenTzYslVUwGkYZzwv2jYpkWVQ",
@@ -50,7 +54,16 @@ const firebaseConfig = {
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: !isDevMode(), // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
+      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+      connectInZone: true // If set to true, the connection is established within the Angular zone
+    }),
   ],
   providers: [
     provideFirebaseApp(() => initializeApp({"projectId":"ingreso-egreso-app-9003b","appId":"1:14000633282:web:65af93024afcd6a900125b","storageBucket":"ingreso-egreso-app-9003b.firebasestorage.app","apiKey":"AIzaSyBz7_TqqwenTzYslVUwGkYZzwv2jYpkWVQ","authDomain":"ingreso-egreso-app-9003b.firebaseapp.com","messagingSenderId":"14000633282","measurementId":"G-6BRL42E07J"})),
