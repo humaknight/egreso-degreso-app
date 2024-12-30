@@ -49,12 +49,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(this.loginForm.value); */
 
     this.auth.loginUsuario(this.loginForm.value.correo, this.loginForm.value.password).then(resp => {
-      console.log(resp);
+      // console.log(resp);
       // Swal.close();
       this.store.dispatch(ui.stopLoading());
       this.router.navigate(['/']);
     }).catch(err => {
-      console.log(err);
+      // console.log(err);
       this.store.dispatch(ui.stopLoading());
       Swal.fire({
         icon: "error",

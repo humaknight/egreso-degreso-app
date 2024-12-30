@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import * as ui from '../shared/ui.actions';
+import { AppStateWithIngreso } from './ingreso-egreso.reducer';
 @Component({
   selector: 'app-ingreso-egreso',
   templateUrl: './ingreso-egreso.component.html'
@@ -18,7 +19,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
   cargando: boolean = false;
   uiSubscription!: Subscription;
 
-  constructor( private fb: FormBuilder, private ingresoEgresoService:IngresoEgresoService, private store:Store<AppState>) { }
+  constructor( private fb: FormBuilder, private ingresoEgresoService:IngresoEgresoService, private store:Store<AppStateWithIngreso>) { }
 
   ngOnInit() {
     this.ingresoForm = this.fb.group({
