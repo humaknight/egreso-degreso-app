@@ -24,6 +24,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import {StoreModule} from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './app.reducer';
+import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBz7_TqqwenTzYslVUwGkYZzwv2jYpkWVQ",
@@ -47,7 +48,8 @@ const firebaseConfig = {
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoPipe
   ],
   imports: [
     BrowserModule,
